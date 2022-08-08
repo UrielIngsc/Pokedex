@@ -1,0 +1,76 @@
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokédex</title>
+    <script src="code.js"></script>
+    <link href="css/nes.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div id="title">
+        <p><i class="nes-pokeball"></i> Pokédex <i class="nes-pokeball"></i></p>
+    </div>
+
+    <div id="pokedex">
+        <div id="information_pokemon_container" class="borde">
+            <div id="led_container">
+                <div id="led_container_1">
+                    <div id="led"></div>
+                </div>
+                <div id="led_container_2"></div>
+                <div id="led_container_3"></div>
+            </div>
+            
+
+            <div id="display_img_pokemon">
+                <img id="img_pokemon" src=" img/no_image.png " alt="pikachu">
+            </div>
+
+            <div id="stats">
+                <span>Estadisticas</span>
+                <br>
+                <div class="progress_bar_div">
+                    <label for="pb_attack">SAL</label>
+                    <progress class="progress_bar_stat" id="pb_sal" max="100" value="0"> 70% </progress>
+                </div>
+                <div class="progress_bar_div">
+                    <label for="pb_attack">DEF</label>
+                    <progress class="progress_bar_stat" id="pb_def" max="100" value="0"> 70% </progress>
+                </div>
+                <div class="progress_bar_div">
+                    <label for="pb_attack">ATK</label>
+                    <progress class="progress_bar_stat" id="pb_atk" max="100" value="0"> 70% </progress>
+                </div>
+            </div>
+        </div>
+
+        <div id="search_pokemon_container">
+            <div id="search_pokemon_top"></div>
+            <div id="search_pokemon_panel">
+                <div id="display_info_pokemon">
+                    
+                </div>
+                    <form action="/" method="post">
+                        <input type="text" name="idOrNamePokemon" id="name_pokemon" placeholder="Nombre o ID del pokémon">
+                        <button id="search_pokemon_button">Buscar</button>
+                    </form>
+                    
+                
+                
+            </div>
+        </div>
+    </div>
+    <div id="creditos">
+        <p>Creado por <%= name %></p>
+    </div>  
+
+    <audio src='/img/sountrack.mp3'></audio>
+</body>
+
+</html>

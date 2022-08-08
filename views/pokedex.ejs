@@ -29,7 +29,7 @@
             
 
             <div id="display_img_pokemon">
-                <img id="img_pokemon" src=" img/no_image.png " alt="pikachu">
+                <img id="img_pokemon" src= " <%= imagePokemon %> "alt="pikachu">
             </div>
 
             <div id="stats">
@@ -37,15 +37,15 @@
                 <br>
                 <div class="progress_bar_div">
                     <label for="pb_attack">SAL</label>
-                    <progress class="progress_bar_stat" id="pb_sal" max="100" value="0"> 70% </progress>
+                    <progress class="progress_bar_stat" id="pb_sal" max="100" value= <%= sal %>> 70% </progress>
                 </div>
                 <div class="progress_bar_div">
                     <label for="pb_attack">DEF</label>
-                    <progress class="progress_bar_stat" id="pb_def" max="100" value="0"> 70% </progress>
+                    <progress class="progress_bar_stat" id="pb_def" max="100" value=<%= def %>> 70% </progress>
                 </div>
                 <div class="progress_bar_div">
                     <label for="pb_attack">ATK</label>
-                    <progress class="progress_bar_stat" id="pb_atk" max="100" value="0"> 70% </progress>
+                    <progress class="progress_bar_stat" id="pb_atk" max="100" value=<%= atk %>> 70% </progress>
                 </div>
             </div>
         </div>
@@ -54,7 +54,7 @@
             <div id="search_pokemon_top"></div>
             <div id="search_pokemon_panel">
                 <div id="display_info_pokemon">
-                    
+                    <p> <%= info %></p>
                 </div>
                     <form action="/" method="post">
                         <input type="text" name="idOrNamePokemon" id="name_pokemon" placeholder="Nombre o ID del pokémon">
@@ -67,7 +67,7 @@
         </div>
     </div>
     <div id="creditos">
-        <p>Creado por <%= name %></p>
+        <p>Creado por Uriel</p>
     </div>  
 
     <audio src='/img/sountrack.mp3'></audio>

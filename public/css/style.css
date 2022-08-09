@@ -4,9 +4,7 @@ body {
     margin: 0 auto;
     overflow: hidden;
     background-color: #212529;
-    /* background-image: url(img/background.jpg); */
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
+
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: repeat(10, 1fr);

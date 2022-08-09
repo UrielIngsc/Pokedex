@@ -2,10 +2,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const https = require('https');
 const fs = require('fs');
-const say = require('say');
-const ejm = require('./utilities');
-
-
 
 let pokemon = {
     namePokemon: null,
@@ -13,9 +9,9 @@ let pokemon = {
     sal: 0,
     def: 0,
     atk: 0,
-    specie: 0,
+    specie: null,
     typePokemon: null,
-    info: null
+    info: null,
 }
 
 const app = express();
@@ -23,6 +19,7 @@ const app = express();
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
+
 
 app.get("/", async(req, res)=>{
     res.render("pokedex", {
@@ -43,6 +40,7 @@ app.post("/", function(req, res){
     https.get(url, (response)=>{
         let data = "";
 
+        console.log(response.statusCode);
         if(response.statusCode === 200){
             response.on("data", (chunk)=>{       
                 data += chunk;
@@ -52,23 +50,31 @@ app.post("/", function(req, res){
             response.on("end", ()=>{
                 let dataPokemon = JSON.parse(data);
                 console.log("Data parse to Json");
-    
+
                 pokemon.namePokemon = dataPokemon.name;
                 pokemon.imagePokemon = dataPokemon.sprites.front_default;
                 pokemon.sal = dataPokemon.stats[0].base_stat;
                 pokemon.atk = dataPokemon.stats[1].base_stat;
                 pokemon.def = dataPokemon.stats[2].base_stat;
                 pokemon.typePokemon = dataPokemon.types[0].type.name;
-                pokemon.info = `${pokemon.namePokemon} pokemon type ${pokemon.typePokemon}`
+                pokemon.url = dataPokemon.species.url;
+                pokemon.info = `${pokemon.namePokemon} pokemon type ${pokemon.typePokemon} 
+                height:${dataPokemon.height} weight: ${dataPokemon.weight}\n
+                moves: 1.${dataPokemon.moves[0].move.name} \n2.${dataPokemon.moves[1].move.name}\n
+                3.${dataPokemon.moves[2].move.name}`
     
                 const dataJson = JSON.stringify(pokemon);
                 fs.writeFileSync('pokemonData.json', dataJson);
                 
-                console.log(ejm.area(4));
                 res.redirect("/");
-            
             }) 
-        };
+            
+        }else if(res.statusCode === 404){
+            response.on("data", (data)=>{
+                pokemon.imagePokemon = "img/pokemon404.png";
+                pokemon.info = "Ha habido un erro intentalo de nuevo o recarga la pagina :c";
+            })
+        }
         
     }).on('error', (err)=>{
         console.log("Error" + err.message);

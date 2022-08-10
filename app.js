@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const https = require('https');
-const fs = require('fs');
 
 let pokemon = {
     namePokemon: null,

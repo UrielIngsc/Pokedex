@@ -36,7 +36,6 @@ app.post("/", function(req, res){
     const pokemonToSearch = req.body.idOrNamePokemon;
     const url = `https://pokeapi.co/api/v2/pokemon/${pokemonToSearch}`;
 
-   
     https.get(url, (response)=>{
         let data = "";
 
@@ -62,18 +61,9 @@ app.post("/", function(req, res){
                 height:${dataPokemon.height} weight: ${dataPokemon.weight}\n
                 moves: 1.${dataPokemon.moves[0].move.name} \n2.${dataPokemon.moves[1].move.name}\n
                 3.${dataPokemon.moves[2].move.name}`
-    
-                const dataJson = JSON.stringify(pokemon);
-                fs.writeFileSync('pokemonData.json', dataJson);
-                
+              
                 res.redirect("/");
             }) 
-            
-        }else if(res.statusCode === 404){
-            response.on("data", (data)=>{
-                pokemon.imagePokemon = "img/pokemon404.png";
-                pokemon.info = "Ha habido un erro intentalo de nuevo o recarga la pagina :c";
-            })
         }
         
     }).on('error', (err)=>{

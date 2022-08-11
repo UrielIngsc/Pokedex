@@ -1,0 +1,23 @@
+{
+  "name": "pokedex",
+  "version": "1.0.0",
+  "description": "Project of pokedex with pokeApi",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UrielIngsc/Pokedex.git"
+  },
+  "author": "Uriel Emiliano",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UrielIngsc/Pokedex/issues"
+  },
+  "homepage": "https://github.com/UrielIngsc/Pokedex#readme",
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.1"
+  }
+}

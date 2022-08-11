@@ -64,6 +64,11 @@ app.post("/", function(req, res){
                 res.redirect("/");
             }) 
         }
+        else if(response.statusCode === 404){
+            pokemon.info = `Lo sentimos, no encontramos el pokemon con nombre ${pokemonToSearch}, intentalo mas tarde`;
+            pokemon.imagePokemon = "img/pokemon404.png";
+            res.redirect("/");
+        }
         
     }).on('error', (err)=>{
         console.log("Error" + err.message);
